@@ -1,0 +1,65 @@
+Go to terraform-multiple-env repository like git clone https://github.com/hareesh-reddy-g/terraform-multiple-env.git 
+then 
+** cd tfvars 
+
+** terraform init -backend-config=dev/backend.tf
+
+** terraform plan -var-file=dev/dev.tfvars
+
+** terraform apply -auto-approve -var-file=dev/dev.tfvars
+
+
+
+upto here dev work instance and everything created noww we have to change to production environment
+
+** terraform init -backend-config=prod/backend.tf -reconfigure
+
+** terraform plan -var-file=prod/prod.tfvars
+
+** terraform apply -auto-approve -var-file=prod/prod.tfvars
+
+
+If we want to destroy development what i have to do means follow this
+** terraform init -backend-config=dev/backend.tf -reconfigure
+** terraform destroy -auto-approve -var-file=dev/dev.tfvars
+
+
+**  terraform workspace
+
+** terraform workspace list 
+
+** terraform workspace new dev
+
+** terraform workspace new prod 
+
+** terraform workspace list 
+
+** terraform workspace select dev
+
+** terraform workspace list 
+
+** cd ..
+** cd workspaces
+
+** terraform workspace create dev
+
+** terraform workspace new dev 
+
+** cd ..
+
+** cd tfvars
+
+** terraform init -backend-config=prod/backend.tf -reconfigure
+
+** terraform destroy -var-file=prod/prod.tfvars
+
+** terraform init 
+
+** terraform plan
+
+** terraform apply -auto-approve
+
+
+
+
+
